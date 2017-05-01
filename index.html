@@ -1,31 +1,82 @@
-
 <!DOCTYPE html>
-<html lang "ja">
+<html lang="ja">
 <head>
-
-<met charset="utf-8">
-<title>JavarScrip</title>
+<meta charset ="utf-8">
+<title>Stop at 00:05!</title>
+<style>
+body{
+background: #e0e0e0;
+text-align:center;
+font-size:16px;
+font-family: Arial, sans-serif;
+}
+#result{
+  font-weight: bold;
+  font-size: 32px;
+  margin: 60px auto;
+  color: #00aaff;
+  text-shadow: 0 1px 0 rgba (255, 255,255,0.5);
+}
+#btn{
+  margin: 0 auto;
+  width: 200px;
+  padding: 7px;
+  color: #fff;
+  border-radius: 5px;
+  background: #00aaff;
+  box-shadow: 0 4px 0 #0088cc;
+  cursor: pointer;
+}
+.diff{
+  color:red;
+}
+</style>
 </head>
 <body>
+<div>chapter <span class="diff">#6</span></div>
+
+  <div id="result">
+
+  </div>
+  <div id="btn">
+    START
+  </div>
   <script>
-var signal ="red";
-switch (signal){
-  case "red":
-  console.log("stop");
+    (function(){
+      'use strict';
+      var isStarted = false;
+      var startTime;
+      var diff;
+      var msg ='<div>Stop at <span class ="diff">00.05</span></div>';
+      var result = document.getElementById('result');
+      var btn = document.getElementById('btn');
+      result.innerHTML = msg;
+      console.log (btn);
+      btn.addEventListener('click' , function(){
+        if (!isStarted){
+          isStarted = true;
+          this.innerHTML ='STOP';
+          startTime = Date.now();
+          result.innerHTML = msg;
 
-  case "green":
-  case "blue":
-  console.log("go");
-  break;
-  case "yellow":
-  console.log("slow down");
-  break;
-  default:
-  console.log("Wrong signal");
-  break;
-}
- </script>;
+        } else {
 
+          isStarted = false;
+          this.innerHTML='START';
+          diff = (Date.now()- startTime)/ 1000 - 5;
+        //  console.log(diff);
+            if (diff>= -0.1 && diff <= 0.1){
+               result.innerHTML = ' perfect!';
+            } else if (diff > 0) {
+              // 'string' + 'html tag string' + Number
+
+               result.innerHTML = ' you are' + '<div><span class ="diff">' +diff.toFixed(2) + '</span></div> '+'seconds late!';
+            } else {
+              result.innerHTML = ' you are' + '<div><span class ="diff">'+Math.abs (diff).toFixed(2)+'</span></div>' +'seconds fast!';
+            }
+          }
+        });
+    })();
+  </script>
 </body>
-
 </html>
