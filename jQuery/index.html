@@ -3,8 +3,25 @@
 <head>
     <meta charset="utf-8">
 <title>JQueryの練習</title>
+<!-- /*<style>
+ .myStyle{
+   border: 5px solid green;
+   font-size: 48px;
+ }
+</style>*/ -->
 </head>
 <body>
-  <h1>JQueryの練習<h1>
+  <p>JQueryの練習<p>
+  <a href="http://google.com.jp"data-sitename="google">google</a>
+    <script src ="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>
+$(function(){
+//$('p').css('color', 'red').css('background', 'blue');
+//console.log($('p').css('color', 'red'));
+// console.log($('a').attr('href'));
+// $('a').attr('href','http://google.co.jp')
+console.log($('a').data('sitename'));
+});
+</script>
 </body>
 </html>
