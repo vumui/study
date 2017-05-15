@@ -3,24 +3,28 @@
 <head>
     <meta charset="utf-8">
 <title>JQueryの練習</title>
-<!-- /*<style>
- .myStyle{
-   border: 5px solid green;
-   font-size: 48px;
- }
-</style>*/ -->
 </head>
 <body>
-  <p>JQueryの練習<p>
-  <a href="http://google.com.jp"data-sitename="google">google</a>
-    <script src ="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <p>JQueryの練習</p>
+   <input type="text" id="name">
+   <select id="members" name="members">
+     <option>takuchi</option>
+     <option>mulodo</option>
+     <option>cndsugfnef</option>
+   </select>
+<script src ="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script>
 $(function(){
-//$('p').css('color', 'red').css('background', 'blue');
-//console.log($('p').css('color', 'red'));
-// console.log($('a').attr('href'));
-// $('a').attr('href','http://google.co.jp')
-console.log($('a').data('sitename'));
+ $('#name')
+    .focus(function(){
+        $(this).css('background','red');
+    })
+     .blur(function(){
+       $(this).css('background','white');
+     });
+  $('#members').change(function() {
+     alert('changed!');
+  });
 });
 </script>
 </body>
